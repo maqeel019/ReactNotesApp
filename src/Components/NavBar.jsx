@@ -23,26 +23,16 @@ function NavBar() {
                 Home
               </Link>
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/project1">
-                  ReactIntroCard
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/project2">
-                  PortFolioCard
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/airbnb">
-                  Airbnb
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/project3">
-                  Practice
+                <Link className="nav-link" aria-current="page" to="/note">
+                  Note
                 </Link>
               </li>
 
+              {/* <li className="nav-item">
+                <Link className="nav-link" aria-current="page" to="/travel">
+                  Memes
+                </Link>
+              </li> */}
             </ul>
           </div>
         </div>
