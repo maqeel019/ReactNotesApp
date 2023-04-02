@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Notepad.css";
 
 function Notepad() {
-  const [notes, setNotes] = useState([]);
+
+  const [notes, setNotes] = useState(
+ ()=> JSON.parse(localStorage.getItem("notes")) || []
+    );
   const [text, setText] = useState("");
   const [font, setFont] = useState("Arial");
   const [fontSize, setFontSize] = useState("16px");
   const [fontColor, setFontColor] = useState("#000000");
-  const [fontWeight, setFontWeight] = useState("550");
+  const [fontWeight, setFontWeight] = useState("500");
+  const [fontStyle, setfontStyle] = useState("normal");
 
 
   function handleChange(event) {
@@ -15,17 +19,25 @@ function Notepad() {
   }
 
   function handleSave() {
-    if(text != ""){
+    if(text !== ""){
       const newNote = { text: text, id: Date.now() };
-    setNotes([...notes, newNote]);
+    setNotes([newNote,...notes]);
     setText("");
     }
-    
   }
 
+
+  useEffect(()=>{
+    localStorage.setItem("notes",JSON.stringify(notes))
+   
+  },[notes])
+  // function handleDelete(id) {
+  //   const newNotes = notes.filter((note) => note.id !== id);
+  //   setNotes(newNotes);
+  // }
+
   function handleDelete(id) {
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
+    setNotes(notes.filter (notes=> notes.id !== id));
   }
 
   // function handleSaveNote() {
@@ -53,12 +65,27 @@ function Notepad() {
   function handleFontWeight(event){
     setFontWeight(event.target.value)
   }
+  function handleFontStyle(event){
+    setfontStyle(event.target.value)
+  }
   return (
+  <div className="main-container">
+      <h2>~NoteApp~</h2>
     <div className="notepad-container">
       <div className="notepad-header">
+        
       <ul className="notepad-notes-list">
+        <li id="NoteBtn">
+        Notes
+      <button onClick={handleSave} className="notepad-save-button">
+          +
+        </button>
+        </li>
+        
           {notes.map((note) => (
-            <li key={note.id} className="notepad-note-item" style={{ fontFamily: font, fontSize: fontSize, color: fontColor }}>
+            <li
+            
+            key={note.id} className="notepad-note-item" style={{ fontFamily: font, fontSize: fontSize, color: fontColor , fontStyle:fontStyle }}>
               {note.text}
               <button onClick={() => handleDelete(note.id)} className="notepad-delete-button">
                 X
@@ -83,11 +110,9 @@ function Notepad() {
             <option value="Cochin">Cochin</option>
             <option value="Georgia">Georgia</option>
             <option value="Times">Times</option>
-            <option value="Cochin">Cochin</option>
             <option value="Segoe UI">Segoe UI</option>
             <option value="Tahoma">Tahoma</option>
             <option value="Geneva">Geneva</option>
-            <option value="Verdana">Verdana</option>
 
           </select>
         </label>
@@ -114,6 +139,15 @@ function Notepad() {
          
         </label>
         <label>
+        font-style
+        <select value={fontStyle} onChange={handleFontStyle}>
+        <option value="normal">Normal</option>
+            <option value="italic">Italic</option>
+            <option value="blique">Oblique</option>          
+          </select>
+        </label>
+        
+        <label>
           Font Weight:
           <select value={fontWeight} onChange={handleFontWeight}>
           <option value="100">100</option>
@@ -127,20 +161,20 @@ function Notepad() {
             <option value="900">900</option>           
           </select>
         </label>
-        <textarea
+        <textarea 
           value={text}
           onChange={handleChange}
           className="notepad-textarea"
           placeholder="Write a note..."
-          style={{ fontFamily: font, fontSize: fontSize, color: fontColor , fontWeight:fontWeight}}
+          style={{ fontFamily: font, fontSize: fontSize, color: fontColor , fontWeight:fontWeight , fontStyle : fontStyle}}
         />
-        <button onClick={handleSave} className="notepad-save-button">
-          Save
-        </button>
-      <p>&#169; 2023 AQEEL(AK019). All rights reserved.</p> 
+       
+       <p >&#169; 2023 AQEEL(AK019). All rights reserved.</p>
+
 
       </div>
       
+    </div>
     </div>
   );
 }

@@ -1,15 +1,24 @@
 /* Notepad.css */
-
+.main-container{
+  display: block;
+  text-align: center;
+  
+} 
+.main-container h2{
+  color: #68b26b;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 800;
+}
 .notepad-container {
   display: flex;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 30px auto ;
   background-color: #fbfbfb;
   padding: 20px;
   font-family: Arial, sans-serif;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-
+/* 
 .notepad-top-bar {
   height: 35px;
   background-color: #f2f2f2;
@@ -17,7 +26,8 @@
   border-top-right-radius: 5px;
   margin-bottom: 20px;
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1);
-}
+
+} */
 
 .notepad-header {
   display: flex;
@@ -38,7 +48,7 @@
 }
 
 .notepad-textarea {
-  width: 500px;
+  width: 450px;
   height: 300px;
   border: none;
   border-radius: 5px;
@@ -46,23 +56,28 @@
   margin-bottom: 10px;
   box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1);
   resize: none;
+  margin-left: 15px;
 }
 
 .notepad-save-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  font-size: 16px;
+  background-color: #68b26b;
+opacity: 0.8;
+color: rgb(0, 0, 0);
+border: none;
+border-radius: 5px;
+padding: 5px 10px;
+cursor: pointer;
+font-weight: 600;
+font-size: 16px;
+margin-left: 207px;
 }
 
 .notepad-save-button:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
-
+#NoteBtn{
+  margin-bottom: 5px;
+}
 .notepad-notes-list {
   list-style: none;
   margin: 0;
@@ -120,3 +135,8 @@
 label{
   padding: 4px;
 }
+/* p {
+  user-select: none;
+  
+} */
+
