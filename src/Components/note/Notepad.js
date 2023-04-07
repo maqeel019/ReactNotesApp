@@ -169,7 +169,7 @@ function Notepad() {
           style={{ fontFamily: font, fontSize: fontSize, color: fontColor , fontWeight:fontWeight , fontStyle : fontStyle}}
         />
        
-       <p >&#169; 2023 AQEEL(AK019). All rights reserved.</p>
+       <p >&#169; 2023 AQEEL(AK019).This work is copyright-free.</p>
 
 
       </div>
